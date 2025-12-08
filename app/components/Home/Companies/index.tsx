@@ -5,11 +5,16 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Image from 'next/image'
 
+interface CompaniesType {
+  imgSrc: string;
+  name: string;
+}
+
 const Companies = () => {
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     arrows: false,
     autoplay: true,
@@ -20,7 +25,7 @@ const Companies = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3,
           slidesToScroll: 1,
           infinite: true,
           dots: false,
@@ -47,39 +52,49 @@ const Companies = () => {
     ],
   }
 
-  const [companies, setCompianes] = useState<{ imgSrc: string }[]>([])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/data')
-        if (!res.ok) throw new Error('Failed to fetch')
-        const data = await res.json()
-        setCompianes(data.Companiesdata)
-      } catch (error) {
-        console.error('Error fetching services:', error)
-      }
+  const Companiesdata: CompaniesType[] = [
+    {
+      imgSrc: '/images/team/bear.png',
+      name: '김성민',
+    },
+    {
+      imgSrc: '/images/team/cat.png',
+      name: '김민',
+    },
+    {
+      imgSrc: '/images/team/fox.png',
+      name: '변만수',
+    },
+    {
+      imgSrc: '/images/team/dog.png',
+      name: '김중은',
+    },
+    {
+      imgSrc: '/images/team/rabbit.png',
+      name: '이지영',
     }
-    fetchData()
-  }, [])
+  ]
+
 
   return (
     <section>
       <div className='container mx-auto max-w-7xl px-4'>
         <h2 className='text-lg mb-10 text-black/40 text-center'>
-          Trusted by companies of all sizes
+          Dedicated by the Makers of Apple Mango
         </h2>
         <div>
           <Slider {...settings}>
-            {companies.map((item, i) => (
-              <div key={i}>
+            {Companiesdata.map((item, i) => (
+              <div key={i} className='!flex flex-row items-center justify-center gap-4'>
                 <Image
                   src={item.imgSrc}
                   alt={item.imgSrc}
                   width={100}
                   height={50}
-                  className='w-auto'
+                  draggable={false}
+                  className="pointer-events-none select-none"
                 />
+                <p>{item.name}</p>
               </div>
             ))}
           </Slider>

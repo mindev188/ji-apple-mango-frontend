@@ -34,22 +34,13 @@ const HourData: Hourtype[] = [
 
 const Companiesdata: { imgSrc: string }[] = [
   {
-    imgSrc: '/images/slickCompany/airbnb.svg',
+    imgSrc: '/images/team/bear.png',
   },
   {
-    imgSrc: '/images/slickCompany/hubspot.svg',
+    imgSrc: '/images/team/cat.png',
   },
   {
-    imgSrc: '/images/slickCompany/microsoft.svg',
-  },
-  {
-    imgSrc: '/images/slickCompany/google.svg',
-  },
-  {
-    imgSrc: '/images/slickCompany/walmart.svg',
-  },
-  {
-    imgSrc: '/images/slickCompany/fedex.svg',
+    imgSrc: '/images/team/dog.png',
   },
 ]
 
